@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word Ladder — Android APK Downloads</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="mesh-bg" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <span class="mini-block ivory">W</span>
+        <span class="mini-block vermilion">L</span>
+      </div>
+      <span class="brand-title">WORD LADDER</span>
+    </div>
+    <button id="themeToggle" class="tactile-btn secondary small" type="button" aria-label="Toggle color theme">
+      DARK MODE
+    </button>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">ANDROID RELEASE CHANNEL</span>
+        <h1>Bridge two words. One letter at a time.</h1>
+        <p class="subtitle">
+          A tactile turn-based word ladder game for 2 to 4 players. Play offline against tactical AI bots, pass-and-play locally, or compete live in real-time online rooms.
+        </p>
+
+        <div class="hero-actions" id="latestDownloadBox">
+          <!-- Populated dynamically from RELEASES[0] in app.js -->
+        </div>
+        <p class="install-note" id="latestMetaNote"></p>
+      </div>
+
+      <div class="hero-board" aria-label="Interactive Word Ladder preview">
+        <div class="board-card">
+          <div class="board-header">
+            <span class="mono-label">EXAMPLE LADDER</span>
+            <span class="mono-badge" id="demoStepLabel">MILK &rarr; SOUP</span>
+          </div>
+          <div class="ladder-stack" id="demoLadder"></div>
+          <p class="board-hint">Tap any tile row to inspect the single-letter mutation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-grid" aria-label="Game highlights">
+      <article class="feature-card">
+        <span class="feature-tag cobalt">01</span>
+        <h3>2–4 Player Turns</h3>
+        <p>Challenge friends locally, race online with 6-character room codes, or pass your turn strategically when blocked.</p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-tag vermilion">02</span>
+        <h3>Tactical Offline Bots</h3>
+        <p>Powered by a fast BFS shortest-path solver across 7,400+ curated 4-letter and 5-letter English words.</p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-tag emerald">03</span>
+        <h3>Smart Scoring</h3>
+        <p>Earn base points per valid word, progress bonuses for stepping closer to the target, and completion bonuses.</p>
+      </article>
+    </section>
+
+    <section class="releases-section" id="releases">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">APK ARCHIVE</span>
+          <h2>All Releases</h2>
+        </div>
+        <div class="filter-group" role="group" aria-label="Filter releases">
+          <button class="filter-chip active" data-filter="all" type="button">ALL</button>
+          <button class="filter-chip" data-filter="stable" type="button">STABLE</button>
+          <button class="filter-chip" data-filter="beta" type="button">BETA</button>
+        </div>
+      </div>
+
+      <div class="release-list" id="releaseList">
+        <!-- Populated from app.js -->
+      </div>
+    </section>
+
+    <section class="install-guide">
+      <div class="board-card">
+        <span class="eyebrow">SIDELOAD GUIDE</span>
+        <h3>How to install the APK on Android</h3>
+        <ol class="steps-list">
+          <li>Tap <strong>Download APK</strong> above to save <code>app-debug.apk</code> to your device.</li>
+          <li>Open the downloaded file from your browser or Files app.</li>
+          <li>If prompted, allow <strong>Install unknown apps</strong> for your browser or file manager, then tap <strong>Install</strong>.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>WORD LADDER &bull; ANDROID BUILD DISTRIBUTION</span>
+    <span id="footerCount"></span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
