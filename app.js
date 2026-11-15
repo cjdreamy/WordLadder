@@ -10,7 +10,7 @@ const RELEASES = [
     date: "2026-11-15",
     minAndroid: "Android 7.0+ (API 24)",
     size: "APK",
-    apkUrl: "files/v1 /app-debug.apk",
+    apkUrl: "files/v1/app-debug.apk",
     fileName: "WordLadder-v1.0.apk",
     notes: [
       "Initial public release with 4-letter and 5-letter English dictionaries (7,400+ words).",
