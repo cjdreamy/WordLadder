@@ -1,9 +1,29 @@
 // ============================================================================
 // ADD FUTURE VERSIONS HERE (Newest version first!)
 // Just duplicate an entry, bump version/date/notes, and point `apkUrl` to your
-// new APK file (e.g. "files/word-ladder-v1.1.apk" or a GitHub Release URL).
+// new APK file (e.g. "files/v4/app-debug.apk" or a GitHub Release URL).
 // ============================================================================
 const RELEASES = [
+  {
+    version: "3.0",
+    channel: "stable", // "stable" | "beta"
+    date: "Date unavailable",
+    minAndroid: "Android 7.0+ (API 24)",
+    size: "APK",
+    apkUrl: "files/v3/app-debug.apk",
+    fileName: "WordLadder-v3.0.apk",
+    notes: ["Version 3 Android build."]
+  },
+  {
+    version: "2.0",
+    channel: "stable",
+    date: "Date unavailable",
+    minAndroid: "Android 7.0+ (API 24)",
+    size: "APK",
+    apkUrl: "files/v2/app-debug.apk",
+    fileName: "WordLadder-v2.0.apk",
+    notes: ["Version 2 Android build."]
+  },
   {
     version: "1.0",
     channel: "stable", // "stable" | "beta"
