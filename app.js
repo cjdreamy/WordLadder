@@ -5,7 +5,7 @@
 // ============================================================================
 const RELEASES = [
    {
-    version: "3.0.4",
+    version: "3.0.5",
     channel: "stable", // "stable" | "beta"
     date: new Date("2026-11-16").toLocaleDateString("en-US", {
     year: "numeric",
@@ -14,10 +14,11 @@ const RELEASES = [
   }),
     minAndroid: "Android 7.0+ (API 24)",
     size: "APK",
-    apkUrl: "files/v3.0.4/app-debug.apk",
-    fileName: "WordLadder-v3.0.4.apk",
+    apkUrl: "files/v3.0.5/app-debug.apk",
+    fileName: "WordLadder-v3.0.5.apk",
     notes: ["Version 3 Android build.",
-      "shows full words instead of letters"
+      "shows full words instead of letters",
+      "Recommentadion(1-5): HIGHLY recommmended (5)"
     ]
   },
    {
@@ -34,7 +35,8 @@ const RELEASES = [
     fileName: "WordLadder-v3.0.4.apk",
     notes: ["Version 3 Android build",
       "- server works, tactile UI",
-      "custom words"
+      "custom words",
+      "Recommentadion(1-5):  recommmended (2)"
     ]
   },
    {
@@ -49,7 +51,9 @@ const RELEASES = [
     size: "APK",
     apkUrl: "files/v3.0.2/app-debug.apk",
     fileName: "WordLadder-v3.0.2.apk",
-    notes: ["Version 3 Android build."]
+    notes: ["Version 3 Android build.",
+      "Recommentadion(1-5): NOT recommmended (1)"
+    ]
   },
    {
     version: "3.0.1",
@@ -59,7 +63,9 @@ const RELEASES = [
     size: "APK",
     apkUrl: "files/v3.0.1/app-debug.apk",
     fileName: "WordLadder-v3.0.1.apk",
-    notes: ["Version 3 Android build."]
+    notes: ["Version 3 Android build.",
+      "Recommentadion(1-5):  recommmended (2)"
+    ]
   },
   {
     version: "3.0",
@@ -69,7 +75,9 @@ const RELEASES = [
     size: "APK",
     apkUrl: "files/v3/app-debug.apk",
     fileName: "WordLadder-v3.0.apk",
-    notes: ["Version 3 Android build."]
+    notes: ["Version 3 Android build.",
+      "Recommentadion(1-5):  recommmended (1.5)"
+    ]
   },
   {
     version: "2.0",
@@ -82,6 +90,7 @@ const RELEASES = [
     notes: ["Version 2 Android build.",
       "skuemorphic UI", 
       "- and alltogether the other features of Version 1.0"
+      ,"Recommentadion(1-5): HIGHLY recommmended (5)"
     ]
   },
   {
@@ -96,7 +105,8 @@ const RELEASES = [
       "Initial public release with 4-letter and 5-letter English dictionaries (7,400+ words).",
       "Offline mode for 2–4 players with Pass & Play and Casual / Tactician / Master AI bots.",
       "Real-time online multiplayer rooms via room codes and public lobbies.",
-      "Tactile 3D letter block board, integrated QWERTY keycap deck, and haptic feedback."
+      "Tactile 3D letter block board, integrated QWERTY keycap deck, and haptic feedback.",
+      "Recommentadion(1-5): HIGHLY recommmended (5)"
     ]
   }
 ];
