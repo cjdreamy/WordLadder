@@ -4,6 +4,63 @@
 // new APK file (e.g. "files/v4/app-debug.apk" or a GitHub Release URL).
 // ============================================================================
 const RELEASES = [
+   {
+    version: "3.0.4",
+    channel: "stable", // "stable" | "beta"
+    date: new Date("2026-11-16").toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  }),
+    minAndroid: "Android 7.0+ (API 24)",
+    size: "APK",
+    apkUrl: "files/v3.0.4/app-debug.apk",
+    fileName: "WordLadder-v3.0.4.apk",
+    notes: ["Version 3 Android build.",
+      "shows full words instead of letters"
+    ]
+  },
+   {
+    version: "3.0.4",
+    channel: "stable", // "stable" | "beta"
+    date: new Date("2026-11-16").toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  }),
+    minAndroid: "Android 7.0+ (API 24)",
+    size: "APK",
+    apkUrl: "files/v3.0.4/app-debug.apk",
+    fileName: "WordLadder-v3.0.4.apk",
+    notes: ["Version 3 Android build",
+      "- server works, tactile UI",
+      "custom words"
+    ]
+  },
+   {
+    version: "3.0.2",
+    channel: "stable", // "stable" | "beta"
+    date: new Date("2026-11-16").toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  }),
+    minAndroid: "Android 7.0+ (API 24)",
+    size: "APK",
+    apkUrl: "files/v3.0.2/app-debug.apk",
+    fileName: "WordLadder-v3.0.2.apk",
+    notes: ["Version 3 Android build."]
+  },
+   {
+    version: "3.0.1",
+    channel: "unstable", // "stable" | "beta"
+    date: "Date unavailable",
+    minAndroid: "Android 7.0+ (API 24)",
+    size: "APK",
+    apkUrl: "files/v3.0.1/app-debug.apk",
+    fileName: "WordLadder-v3.0.1.apk",
+    notes: ["Version 3 Android build."]
+  },
   {
     version: "3.0",
     channel: "stable", // "stable" | "beta"
@@ -22,7 +79,10 @@ const RELEASES = [
     size: "APK",
     apkUrl: "files/v2/app-debug.apk",
     fileName: "WordLadder-v2.0.apk",
-    notes: ["Version 2 Android build."]
+    notes: ["Version 2 Android build.",
+      "skuemorphic UI", 
+      "- and alltogether the other features of Version 1.0"
+    ]
   },
   {
     version: "1.0",
