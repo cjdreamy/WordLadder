@@ -3,7 +3,46 @@
 // Just duplicate an entry, bump version/date/notes, and point `apkUrl` to your
 // new APK file (e.g. "files/v4/app-debug.apk" or a GitHub Release URL).
 // ============================================================================
+
 const RELEASES = [
+  {
+    version: "3.0.6",
+    channel: "stable", // "stable" | "beta"
+    date: new Date("2026-11-16").toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  }),
+    minAndroid: "Android 7.0+ (API 24)",
+    size: "APK",
+    apkUrl: "files/v3.0.6/app-debug.apk",
+    fileName: "WordLadder-v3.0.6.apk",
+    notes: [
+      "Speed multiplier", "Longer words", "Matchmaking",
+      "Settings: username (saved on the phone)", "three themes (Walnut, Midnight, Forest), three tile looks (Oak, Ivory, Slate)", "a haptics on/off switch", "a privacy policy page.",
+"Help: a new page explains the rules and the scoring.",
+"Bots"
+    ]
+  },
+   {
+    version: "2.0.1",
+    channel: "stable", // "stable" | "beta"
+    date: new Date("2026-11-16").toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  }),
+    minAndroid: "Android 7.0+ (API 24)",
+    size: "APK",
+    apkUrl: "files/v2.0.1/app-debug.apk",
+    fileName: "WordLadder-v2.0.1.apk",
+    notes: [
+      "51,000+ English dictionary supporting 4, 5, 6, and 7-letter word ladders.",
+      "Live speed multiplier scoring (up to 2.5x) plus flexible 100+ step detour backtracking.",
+      "Online Quick Matchmaking, direct player game requests, room codes, and public lobbies.",
+      "Offline Pass & Play and AI bots, plus Tavern Settings for usernames, 4 themes, 4 tile looks, help, and privacy policy."
+    ]
+  },
    {
     version: "3.0.5",
     channel: "stable", // "stable" | "beta"
@@ -23,7 +62,7 @@ const RELEASES = [
   },
    {
     version: "3.0.4",
-    channel: "stable", // "stable" | "beta"
+    channel: "beta", // "stable" | "beta"
     date: new Date("2026-11-16").toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -41,7 +80,7 @@ const RELEASES = [
   },
    {
     version: "3.0.2",
-    channel: "stable", // "stable" | "beta"
+    channel: "beta", // "stable" | "beta"
     date: new Date("2026-11-16").toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -57,7 +96,7 @@ const RELEASES = [
   },
    {
     version: "3.0.1",
-    channel: "unstable", // "stable" | "beta"
+    channel: "beta", // "stable" | "beta"
     date: "Date unavailable",
     minAndroid: "Android 7.0+ (API 24)",
     size: "APK",
@@ -69,7 +108,7 @@ const RELEASES = [
   },
   {
     version: "3.0",
-    channel: "stable", // "stable" | "beta"
+    channel: "beta", // "stable" | "beta"
     date: "Date unavailable",
     minAndroid: "Android 7.0+ (API 24)",
     size: "APK",
@@ -89,7 +128,7 @@ const RELEASES = [
     fileName: "WordLadder-v2.0.apk",
     notes: ["Version 2 Android build.",
       "skuemorphic UI", 
-      "- and alltogether the other features of Version 1.0"
+      "and alltogether the other features of Version 1.0"
       ,"Recommentadion(1-5): HIGHLY recommmended (5)"
     ]
   },
