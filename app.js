@@ -5,10 +5,32 @@
 // ============================================================================
 
 const RELEASES = [
+   {
+    version: "2.0.2",
+    channel: "stable", // "stable" | "beta"
+    date: new Date("2026-11-16").toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  }),
+    minAndroid: "Android 7.0+ (API 24)",
+    size: "APK",
+    recommendation: 5,
+    apkUrl: "files/v2.0.2/app-debug.apk",
+    fileName: "WordLadder-v2.0.2.apk",
+    notes: [
+      "Notifications",
+      "Navigation, end rooms cancel, resign, timer toogle",
+      "51,000+ English dictionary supporting 4, 5, 6, and 7-letter word ladders.",
+      "Live speed multiplier scoring (up to 2.5x) plus flexible 100+ step detour backtracking.",
+      "Online Quick Matchmaking, direct player game requests, room codes, and public lobbies.",
+      "Offline Pass & Play and AI bots, plus Tavern Settings for usernames, 4 themes, 4 tile looks, help, and privacy policy."
+    ]
+  },
     {
     version: "2.0.1",
     channel: "stable", // "stable" | "beta"
-    date: new Date("2026-11-16").toLocaleDateString("en-US", {
+    date: new Date("2026-11-17").toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric"
