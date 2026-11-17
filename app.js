@@ -15,6 +15,7 @@ const RELEASES = [
   }),
     minAndroid: "Android 7.0+ (API 24)",
     size: "APK",
+    recommendation: 5,
     apkUrl: "files/v3.0.6/app-debug.apk",
     fileName: "WordLadder-v3.0.6.apk",
     notes: [
@@ -34,6 +35,7 @@ const RELEASES = [
   }),
     minAndroid: "Android 7.0+ (API 24)",
     size: "APK",
+    recommendation: 5,
     apkUrl: "files/v2.0.1/app-debug.apk",
     fileName: "WordLadder-v2.0.1.apk",
     notes: [
@@ -53,11 +55,11 @@ const RELEASES = [
   }),
     minAndroid: "Android 7.0+ (API 24)",
     size: "APK",
+    recommendation: 5,
     apkUrl: "files/v3.0.5/app-debug.apk",
     fileName: "WordLadder-v3.0.5.apk",
     notes: ["Version 3 Android build.",
       "shows full words instead of letters",
-      "Recommentadion(1-5): HIGHLY recommmended (5)"
     ]
   },
    {
@@ -70,12 +72,12 @@ const RELEASES = [
   }),
     minAndroid: "Android 7.0+ (API 24)",
     size: "APK",
+    recommendation: 2,
     apkUrl: "files/v3.0.4/app-debug.apk",
     fileName: "WordLadder-v3.0.4.apk",
     notes: ["Version 3 Android build",
       "- server works, tactile UI",
       "custom words",
-      "Recommentadion(1-5):  recommmended (2)"
     ]
   },
    {
@@ -88,10 +90,10 @@ const RELEASES = [
   }),
     minAndroid: "Android 7.0+ (API 24)",
     size: "APK",
+    recommendation: 1,
     apkUrl: "files/v3.0.2/app-debug.apk",
     fileName: "WordLadder-v3.0.2.apk",
     notes: ["Version 3 Android build.",
-      "Recommentadion(1-5): NOT recommmended (1)"
     ]
   },
    {
@@ -100,11 +102,10 @@ const RELEASES = [
     date: "Date unavailable",
     minAndroid: "Android 7.0+ (API 24)",
     size: "APK",
+    recommendation: 2,
     apkUrl: "files/v3.0.1/app-debug.apk",
     fileName: "WordLadder-v3.0.1.apk",
-    notes: ["Version 3 Android build.",
-      "Recommentadion(1-5):  recommmended (2)"
-    ]
+    notes: ["Version 3 Android build."]
   },
   {
     version: "3.0",
@@ -112,11 +113,10 @@ const RELEASES = [
     date: "Date unavailable",
     minAndroid: "Android 7.0+ (API 24)",
     size: "APK",
+    recommendation: 1.5,
     apkUrl: "files/v3/app-debug.apk",
     fileName: "WordLadder-v3.0.apk",
-    notes: ["Version 3 Android build.",
-      "Recommentadion(1-5):  recommmended (1.5)"
-    ]
+    notes: ["Version 3 Android build."]
   },
   {
     version: "2.0",
@@ -124,12 +124,12 @@ const RELEASES = [
     date: "Date unavailable",
     minAndroid: "Android 7.0+ (API 24)",
     size: "APK",
+    recommendation: 5,
     apkUrl: "files/v2/app-debug.apk",
     fileName: "WordLadder-v2.0.apk",
     notes: ["Version 2 Android build.",
       "skuemorphic UI", 
       "and alltogether the other features of Version 1.0"
-      ,"Recommentadion(1-5): HIGHLY recommmended (5)"
     ]
   },
   {
@@ -138,15 +138,28 @@ const RELEASES = [
     date: "2026-11-15",
     minAndroid: "Android 7.0+ (API 24)",
     size: "APK",
+    recommendation: 5,
     apkUrl: "files/v1/app-debug.apk",
     fileName: "WordLadder-v1.0.apk",
     notes: [
       "Initial public release with 4-letter and 5-letter English dictionaries (7,400+ words).",
       "Offline mode for 2–4 players with Pass & Play and Casual / Tactician / Master AI bots.",
       "Real-time online multiplayer rooms via room codes and public lobbies.",
-      "Tactile 3D letter block board, integrated QWERTY keycap deck, and haptic feedback.",
-      "Recommentadion(1-5): HIGHLY recommmended (5)"
+      "Tactile 3D letter block board, integrated QWERTY keycap deck, and haptic feedback."
     ]
+  }
+];
+
+const DEMOS = [
+  {
+    title: "Quick Play Demo",
+    url: "demo.html",
+    description: "Try a lightweight, pass-and-play word ladder in your browser."
+  },
+  {
+    title: "Wordsmith's Guild Demo",
+    url: "demo2.html",
+    description: "Explore the guild-themed demo with bots, settings, and more."
   }
 ];
 
@@ -177,6 +190,21 @@ function renderHeroLatest() {
   note.textContent = `Latest: v${latest.version} • ${latest.date} • ${latest.minAndroid} • ${latest.apkUrl}`;
 }
 
+function renderDemos() {
+  const list = document.getElementById("demoList");
+  if (!list) return;
+
+  list.innerHTML = DEMOS.map((demo) => `
+    <article class="demo-card">
+      <div>
+        <h3>${demo.title}</h3>
+        <p>${demo.description}</p>
+      </div>
+      <a class="tactile-btn secondary small" href="${demo.url}">PLAY DEMO</a>
+    </article>
+  `).join("");
+}
+
 function renderReleases(filter = "all") {
   const list = document.getElementById("releaseList");
   const footerCount = document.getElementById("footerCount");
@@ -200,6 +228,8 @@ function renderReleases(filter = "all") {
             <div class="release-title-row">
               <span class="version-pill">v${rel.version}</span>
               <span class="channel-pill ${rel.channel}">${isLatest ? "LATEST • " : ""}${rel.channel}</span>
+              <span class="release-badge">${rel.size}</span>
+              <span class="recommendation-badge">RECOMMENDATION ${rel.recommendation}/5</span>
               <span class="release-date">${rel.date} • ${rel.minAndroid}</span>
             </div>
             <ul class="release-notes">${notesHtml}</ul>
@@ -305,6 +335,7 @@ function setupFilters() {
 document.addEventListener("DOMContentLoaded", () => {
   setupThemeToggle();
   renderHeroLatest();
+  renderDemos();
   renderReleases("all");
   renderDemoLadder();
   setupFilters();

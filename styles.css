@@ -408,6 +408,42 @@ h3 {
   border-color: var(--ink);
 }
 
+.platform-note {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.platform-note strong {
+  color: var(--vermilion);
+}
+
+.demo-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.demo-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--surface);
+  border: 1.5px solid var(--bevel);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 5px 0 var(--bevel);
+}
+
+.demo-card h3 {
+  margin-bottom: 4px;
+}
+
+.demo-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 .release-list {
   display: flex;
   flex-direction: column;
@@ -430,6 +466,7 @@ h3 {
 .release-title-row {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 6px;
 }
@@ -457,6 +494,21 @@ h3 {
 .channel-pill.stable { background: var(--emerald); }
 .channel-pill.beta { background: var(--cobalt); }
 
+.release-badge,
+.recommendation-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--tray);
+  border: 1px solid var(--bevel);
+}
+
+.recommendation-badge {
+  color: var(--emerald);
+}
+
 .release-date {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
@@ -482,6 +534,7 @@ h3 {
 .release-actions {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -523,5 +576,12 @@ h3 {
   }
   .features-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .demo-card {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
