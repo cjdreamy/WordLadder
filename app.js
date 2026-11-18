@@ -386,3 +386,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupFilters();
 });
  
+document.getElementById("changePage").addEventListener("click", () => {
+  window.location.href = "v2/index2.html";
+});

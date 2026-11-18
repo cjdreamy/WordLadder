@@ -1,0 +1,879 @@
+:root {
+  --bg-top: #4b3424;
+  --bg-mid: #382519;
+  --bg-bottom: #26180f;
+  --mortar: rgba(20, 10, 4, 0.45);
+  --glow: rgba(255, 206, 107, 0.22);
+
+  --wood-hi: #8a5c44;
+  --wood-mid: #6e4632;
+  --wood-lo: #4d2f20;
+  --wood-seam: #2f1a10;
+  --wood-frame: #1f1008;
+
+  --gold-spec: #fff5ad;
+  --gold-hi: #ffdc5e;
+  --gold-mid: #eead22;
+  --gold-lo: #bd780e;
+  --gold-bevel: #7a4604;
+  --gold-ink: #2b1603;
+
+  --parchment-hi: #fdf3d7;
+  --parchment-mid: #f1deb0;
+  --parchment-lo: #d8ba7f;
+  --parchment-bevel: #96723d;
+  --parchment-ink: #2c190c;
+  --parchment-muted: #65452a;
+
+  --leather-hi: #6c432e;
+  --leather-lo: #432718;
+  --leather-bevel: #27140a;
+  --leather-stitch: rgba(226, 179, 105, 0.65);
+
+  --stone-hi: #4d5663;
+  --stone-mid: #353c46;
+  --stone-lo: #21262e;
+  --stone-bevel: #13171d;
+
+  --emerald-hi: #66df77;
+  --emerald-mid: #28a341;
+  --emerald-lo: #17782b;
+  --emerald-bevel: #0d4a19;
+
+  --ruby-hi: #ff7a66;
+  --ruby-mid: #df3724;
+  --ruby-lo: #b02010;
+  --ruby-bevel: #690f06;
+
+  --sapphire-hi: #74b8ff;
+  --sapphire-mid: #2b75e6;
+  --sapphire-lo: #194fae;
+  --sapphire-bevel: #0d2e69;
+
+  --ivory-hi: #fffbeb;
+  --ivory-mid: #efe0bb;
+  --ivory-bevel: #a38754;
+
+  --cream-text: #fff8e6;
+  --sand-muted: #dfc8a1;
+}
+
+body.dark {
+  --bg-top: #263442;
+  --bg-mid: #1b2631;
+  --bg-bottom: #111820;
+  --mortar: rgba(8, 12, 17, 0.55);
+  --glow: rgba(245, 166, 35, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(180deg, var(--bg-top), var(--bg-mid) 45%, var(--bg-bottom));
+  color: var(--cream-text);
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+.tavern-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    radial-gradient(circle at 50% 18%, var(--glow), transparent 62%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 54px,
+      var(--mortar) 54px,
+      var(--mortar) 56px,
+      rgba(255, 255, 255, 0.03) 56px,
+      rgba(255, 255, 255, 0.03) 57px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 108px,
+      rgba(8, 12, 17, 0.24) 108px,
+      rgba(8, 12, 17, 0.24) 110px
+    );
+}
+
+.topbar {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 20px 20px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.brand-plaque {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px 8px 10px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, var(--wood-hi), var(--wood-lo));
+  border: 2px solid var(--gold-mid);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 5px 0 var(--wood-frame),
+    0 10px 18px rgba(0, 0, 0, 0.45);
+}
+
+.brand-mark {
+  display: flex;
+  gap: 5px;
+}
+
+.mini-block {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  font-family: 'Lilita One', 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  border-radius: 8px;
+  border: 1.5px solid var(--wood-frame);
+}
+
+.mini-block.ivory {
+  background: linear-gradient(180deg, var(--ivory-hi), var(--ivory-mid));
+  color: var(--parchment-ink);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.7), 0 3px 0 var(--ivory-bevel);
+}
+
+.mini-block.ruby {
+  background: linear-gradient(180deg, var(--ruby-hi), var(--ruby-mid));
+  color: #fff;
+  text-shadow: 0 2px 0 var(--ruby-bevel);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.4), 0 3px 0 var(--ruby-bevel);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-title {
+  font-family: 'Lilita One', 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  color: var(--cream-text);
+  text-shadow: 0 2px 0 var(--wood-frame);
+}
+
+.brand-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--gold-hi);
+  letter-spacing: 0.08em;
+}
+
+.topbar-hud {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Classic Capsule Resource Gauge (Reference-inspired) */
+.hud-capsule {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 14px 0 42px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--leather-bevel), var(--leather-lo) 45%, var(--leather-hi));
+  border: 2px solid var(--gold-mid);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.55), 0 4px 0 var(--wood-frame);
+}
+
+.hud-medallion {
+  position: absolute;
+  left: -4px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, var(--gold-spec), var(--gold-mid) 60%, var(--gold-lo));
+  color: var(--gold-ink);
+  border: 2px solid var(--gold-ink);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.65), 0 3px 0 var(--wood-frame);
+}
+
+.hud-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--sand-muted);
+  letter-spacing: 0.08em;
+}
+
+.hud-value {
+  font-family: 'Lilita One', sans-serif;
+  font-size: 15px;
+  color: var(--cream-text);
+  text-shadow: 0 2px 0 var(--wood-frame);
+}
+
+.container {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 20px 20px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* Wood Plank Panel + Burnished Gold Riveted Frame */
+.wood-panel {
+  position: relative;
+  border-radius: 22px;
+  padding: 8px;
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold-mid) 45%, var(--gold-lo));
+  border: 2.5px solid var(--gold-ink);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.55),
+    0 8px 0 var(--wood-frame),
+    0 18px 34px rgba(0, 0, 0, 0.52);
+}
+
+.wood-panel::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 15px;
+  border: 2px solid var(--wood-frame);
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04) 0px,
+      rgba(255, 255, 255, 0.04) 2px,
+      transparent 2px,
+      transparent 38px,
+      var(--wood-seam) 38px,
+      var(--wood-seam) 41px
+    ),
+    linear-gradient(180deg, var(--wood-hi), var(--wood-mid) 50%, var(--wood-lo));
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.42);
+  pointer-events: none;
+}
+
+.wood-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Curved Top Gold Nameplate Banner (PAUSED plaque inspiration) */
+.gold-nameplate {
+  width: min(320px, 84%);
+  margin: -8px auto 14px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: linear-gradient(180deg, var(--gold-spec), var(--gold-hi) 38%, var(--gold-mid));
+  border: 2.5px solid var(--gold-ink);
+  border-top: none;
+  border-radius: 0 0 22px 22px;
+  box-shadow:
+    inset 0 -3px 0 var(--gold-lo),
+    0 4px 6px rgba(0, 0, 0, 0.4);
+  font-family: 'Lilita One', 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: #fff;
+  text-shadow:
+    -1.5px -1.5px 0 var(--gold-ink),
+     1.5px -1.5px 0 var(--gold-ink),
+    -1.5px  1.5px 0 var(--gold-ink),
+     1.5px  1.5px 0 var(--gold-ink),
+     0      3px   0 var(--gold-ink);
+}
+
+.rivet {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, var(--gold-spec), var(--gold-lo));
+  border: 1.5px solid var(--gold-ink);
+  flex-shrink: 0;
+}
+
+.panel-body {
+  padding: 8px 14px 14px;
+}
+
+/* Aged Parchment Scroll */
+.parchment-scroll {
+  background: linear-gradient(180deg, var(--parchment-hi), var(--parchment-mid) 65%, var(--parchment-lo));
+  color: var(--parchment-ink);
+  border: 2px solid var(--wood-frame);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow:
+    inset 0 0 18px rgba(132, 88, 34, 0.25),
+    inset 0 2px 0 rgba(255, 255, 255, 0.6),
+    0 5px 0 var(--parchment-bevel);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 26px;
+  align-items: stretch;
+}
+
+.hero-scroll {
+  margin: 0 10px 10px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ruby-lo);
+  margin-bottom: 8px;
+}
+
+.eyebrow.light {
+  color: var(--gold-hi);
+}
+
+h1 {
+  font-family: 'Lilita One', 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.95rem, 3.8vw, 2.9rem);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  color: var(--parchment-ink);
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.55);
+  margin-bottom: 14px;
+}
+
+h2 {
+  font-family: 'Lilita One', 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 1.75rem;
+  letter-spacing: 0.03em;
+  color: var(--cream-text);
+  text-shadow: 0 3px 0 var(--wood-frame);
+}
+
+h3 {
+  font-family: 'Lilita One', 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  color: var(--parchment-muted);
+  font-size: 0.98rem;
+  max-width: 52ch;
+  margin-bottom: 20px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.inset-well {
+  margin-top: 16px;
+  background: linear-gradient(180deg, var(--stone-lo), var(--stone-mid));
+  border: 1.5px solid var(--wood-frame);
+  border-radius: 10px;
+  padding: 9px 12px;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.install-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  color: var(--sand-muted);
+  word-break: break-word;
+}
+
+/* Glossy 3D Beveled Skeuomorphic Buttons */
+.tactile-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-family: 'Lilita One', 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  padding: 13px 22px;
+  border-radius: 14px;
+  cursor: pointer;
+  border: 2px solid var(--gold-ink);
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold-mid) 65%, var(--gold-lo));
+  color: var(--gold-ink);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.65),
+    0 6px 0 var(--gold-bevel),
+    0 10px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.09s ease, box-shadow 0.09s ease, filter 0.12s ease;
+  user-select: none;
+}
+
+.tactile-btn::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  right: 6px;
+  height: 36%;
+  border-radius: 9px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.02));
+  pointer-events: none;
+}
+
+.tactile-btn:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.72),
+    0 7px 0 var(--gold-bevel),
+    0 12px 18px rgba(0, 0, 0, 0.45);
+}
+
+.tactile-btn:active {
+  transform: translateY(5px);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.35),
+    0 1px 0 var(--gold-bevel);
+}
+
+.tactile-btn.emerald {
+  background: linear-gradient(180deg, var(--emerald-hi), var(--emerald-mid) 65%, var(--emerald-lo));
+  color: #fff;
+  text-shadow: 0 2px 0 var(--emerald-bevel);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.48),
+    0 6px 0 var(--emerald-bevel),
+    0 10px 16px rgba(0, 0, 0, 0.4);
+}
+
+.tactile-btn.emerald:hover {
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.55),
+    0 7px 0 var(--emerald-bevel),
+    0 12px 18px rgba(0, 0, 0, 0.45);
+}
+
+.tactile-btn.emerald:active {
+  box-shadow: 0 1px 0 var(--emerald-bevel);
+}
+
+.tactile-btn.wood,
+.tactile-btn.secondary {
+  background: linear-gradient(180deg, var(--wood-hi), var(--wood-mid) 65%, var(--wood-lo));
+  color: var(--cream-text);
+  text-shadow: 0 2px 0 var(--wood-frame);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.28),
+    0 5px 0 var(--wood-frame),
+    0 8px 14px rgba(0, 0, 0, 0.38);
+}
+
+.tactile-btn.wood:hover,
+.tactile-btn.secondary:hover {
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.34),
+    0 6px 0 var(--wood-frame),
+    0 10px 16px rgba(0, 0, 0, 0.42);
+}
+
+.tactile-btn.wood:active,
+.tactile-btn.secondary:active {
+  box-shadow: 0 1px 0 var(--wood-frame);
+}
+
+.tactile-btn.small {
+  padding: 9px 15px;
+  font-size: 13px;
+  border-radius: 11px;
+}
+
+/* Demo Ladder Board */
+.board-inner {
+  padding: 0 10px 10px;
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.stone-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--sand-muted);
+  background: var(--stone-lo);
+  border: 1.5px solid var(--wood-frame);
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.gold-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold-mid));
+  color: var(--gold-ink);
+  border: 1.5px solid var(--gold-ink);
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.stone-tray {
+  background: linear-gradient(180deg, var(--stone-bevel), var(--stone-lo) 45%, var(--stone-mid));
+  border: 2px solid var(--wood-frame);
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.55);
+}
+
+.ladder-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.ladder-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 8px;
+  border-radius: 11px;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: background-color 0.14s ease, border-color 0.14s ease;
+}
+
+.ladder-row:hover,
+.ladder-row.selected {
+  background: rgba(255, 220, 94, 0.12);
+  border-color: var(--gold-mid);
+}
+
+.tiles-group {
+  display: flex;
+  gap: 6px;
+}
+
+.tile {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  font-family: 'Lilita One', 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, var(--ivory-hi), var(--ivory-mid));
+  color: var(--parchment-ink);
+  border: 1.75px solid var(--wood-frame);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.72),
+    0 4px 0 var(--ivory-bevel);
+  transition: transform 0.12s ease;
+}
+
+.ladder-row:hover .tile {
+  transform: translateY(-2px);
+}
+
+.tile.start {
+  background: linear-gradient(180deg, var(--sapphire-hi), var(--sapphire-mid));
+  color: #fff;
+  text-shadow: 0 2px 0 var(--sapphire-bevel);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.45), 0 4px 0 var(--sapphire-bevel);
+}
+
+.tile.changed {
+  background: linear-gradient(180deg, var(--ruby-hi), var(--ruby-mid));
+  color: #fff;
+  text-shadow: 0 2px 0 var(--ruby-bevel);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.45), 0 4px 0 var(--ruby-bevel);
+}
+
+.tile.target {
+  background: linear-gradient(180deg, var(--emerald-hi), var(--emerald-mid));
+  color: #fff;
+  text-shadow: 0 2px 0 var(--emerald-bevel);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.45), 0 4px 0 var(--emerald-bevel);
+}
+
+.row-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--sand-muted);
+}
+
+.board-hint {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--sand-muted);
+  text-align: center;
+}
+
+/* Saddle Leather Feature Cards */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.leather-card {
+  position: relative;
+  background: linear-gradient(180deg, var(--leather-hi), var(--leather-lo));
+  border: 2px solid var(--wood-frame);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow:
+    inset 0 0 0 2px var(--leather-stitch),
+    0 6px 0 var(--leather-bevel),
+    0 12px 20px rgba(0, 0, 0, 0.35);
+}
+
+.feature-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.leather-card h3 {
+  color: var(--cream-text);
+  text-shadow: 0 2px 0 var(--wood-frame);
+}
+
+.leather-card p {
+  color: var(--sand-muted);
+  font-size: 0.92rem;
+}
+
+.medallion-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: 'Lilita One', sans-serif;
+  font-size: 14px;
+  color: #fff;
+  border: 2px solid var(--gold-ink);
+  flex-shrink: 0;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.4), 0 3px 0 var(--wood-frame);
+}
+
+.medallion-badge.sapphire { background: linear-gradient(180deg, var(--sapphire-hi), var(--sapphire-mid)); }
+.medallion-badge.ruby { background: linear-gradient(180deg, var(--ruby-hi), var(--ruby-mid)); }
+.medallion-badge.emerald { background: linear-gradient(180deg, var(--emerald-hi), var(--emerald-mid)); }
+
+/* Releases Section */
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.filter-group {
+  display: flex;
+  gap: 6px;
+  padding: 5px;
+  border-radius: 12px;
+  background: var(--stone-lo);
+  border: 1.5px solid var(--wood-frame);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.filter-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 8px 13px;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  background: transparent;
+  color: var(--sand-muted);
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.filter-chip.active {
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold-mid));
+  color: var(--gold-ink);
+  border-color: var(--gold-ink);
+  box-shadow: 0 3px 0 var(--gold-bevel);
+}
+
+.release-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.release-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: linear-gradient(180deg, var(--parchment-hi), var(--parchment-mid) 65%, var(--parchment-lo));
+  color: var(--parchment-ink);
+  border: 2px solid var(--wood-frame);
+  border-radius: 15px;
+  padding: 18px;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.6),
+    0 5px 0 var(--parchment-bevel);
+}
+
+.release-info {
+  flex: 1;
+  min-width: 240px;
+}
+
+.release-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.version-pill {
+  font-family: 'Lilita One', sans-serif;
+  font-size: 15px;
+  padding: 4px 11px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, var(--wood-hi), var(--wood-lo));
+  color: var(--cream-text);
+  border: 1.5px solid var(--wood-frame);
+}
+
+.channel-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 7px;
+  color: #fff;
+  border: 1.5px solid var(--gold-ink);
+}
+
+.channel-pill.stable { background: linear-gradient(180deg, var(--emerald-hi), var(--emerald-mid)); }
+.channel-pill.beta { background: linear-gradient(180deg, var(--sapphire-hi), var(--sapphire-mid)); }
+
+.release-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--parchment-muted);
+}
+
+.release-notes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 8px;
+  font-size: 0.92rem;
+  color: var(--parchment-ink);
+}
+
+.release-notes li::before {
+  content: '◆ ';
+  color: var(--ruby-lo);
+  font-weight: 700;
+}
+
+.release-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.install-guide h3 {
+  color: var(--parchment-ink);
+  margin-bottom: 8px;
+}
+
+.steps-list {
+  margin-top: 8px;
+  padding-left: 20px;
+  color: var(--parchment-ink);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.steps-list code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  background: rgba(67, 39, 24, 0.14);
+  border: 1px solid var(--parchment-bevel);
+  padding: 2px 6px;
+  border-radius: 5px;
+  color: var(--parchment-ink);
+}
+
+.footer {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 20px;
+  border-top: 2px solid rgba(238, 173, 34, 0.35);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--sand-muted);
+}
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}

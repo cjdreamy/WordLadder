@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word Ladder — Android APK Downloads</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&family=Lilita+One&family=Plus+Jakarta+Sans:wght@500;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body class="dark">
+  <div class="tavern-bg" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand-plaque" id="changePage" style="cursor: pointer;">
+      <div class="brand-mark" aria-hidden="true">
+        <span class="mini-block ivory">W</span>
+        <span class="mini-block ruby">L</span>
+      </div>
+      <div class="brand-text">
+        <span class="brand-title">WORD LADDER</span>
+        <span class="brand-sub">CLASSIC TACTILE EDITION</span>
+      </div>
+    </div>
+
+    <div class="topbar-hud">
+      <div class="hud-capsule" aria-label="Dictionary size">
+        <span class="hud-medallion gold" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2l2.9 6.1 6.7.9-4.9 4.7 1.2 6.7L12 17.2l-5.9 3.2 1.2-6.7L2.4 9l6.7-.9z"/></svg>
+        </span>
+        <span class="hud-label">WORDS</span>
+        <span class="hud-value">51,099</span>
+      </div>
+      <button id="themeToggle" class="tactile-btn wood small" type="button" aria-label="Toggle tavern lighting theme">
+        LIGHT TABLE
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="wood-panel hero-panel">
+        <div class="gold-nameplate">
+          <span class="rivet" aria-hidden="true"></span>
+          <span>ANDROID RELEASE</span>
+          <span class="rivet" aria-hidden="true"></span>
+        </div>
+
+        <div class="parchment-scroll hero-scroll">
+          <span class="eyebrow">OFFICIAL APK CHANNEL</span>
+          <h1>Bridge two words. One letter at a time.</h1>
+          <p class="subtitle">
+            A classic turn-based word ladder game for 2 to 4 players. Outthink tactical AI bots offline, pass-and-play around the table, or battle challengers in real-time online rooms.
+          </p>
+
+          <div class="hero-actions" id="latestDownloadBox">
+            <!-- Populated dynamically from RELEASES[0] in app.js -->
+          </div>
+          <div class="inset-well meta-well">
+            <p class="install-note" id="latestMetaNote"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-board" aria-label="Interactive Word Ladder preview">
+        <div class="wood-panel board-panel">
+          <div class="gold-nameplate">
+            <span class="rivet" aria-hidden="true"></span>
+            <span>EXAMPLE LADDER</span>
+            <span class="rivet" aria-hidden="true"></span>
+          </div>
+
+          <div class="board-inner">
+            <div class="board-header">
+              <span class="stone-badge">PAR 5 STEPS</span>
+              <span class="gold-badge" id="demoStepLabel">MILK &rarr; SOUP</span>
+            </div>
+            <div class="stone-tray ladder-stack" id="demoLadder"></div>
+            <p class="board-hint">Tap any rung to inspect its single-letter mutation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-grid" aria-label="Game highlights">
+      <article class="leather-card">
+        <div class="feature-head">
+          <span class="medallion-badge sapphire">01</span>
+          <h3>2&ndash;4 Player Turns</h3>
+        </div>
+        <p>Challenge friends locally, join live online lobbies via 6-character room codes, or pass strategically when blocked.</p>
+      </article>
+      <article class="leather-card">
+        <div class="feature-head">
+          <span class="medallion-badge ruby">02</span>
+          <h3>4L&ndash;7L Tactical Arena</h3>
+        </div>
+        <p>Powered by a fast BFS shortest-path solver across 51,000+ curated 4, 5, 6, and 7-letter English words with 100+ step detours.</p>
+      </article>
+      <article class="leather-card">
+        <div class="feature-head">
+          <span class="medallion-badge emerald">03</span>
+          <h3>Optional Speed Boost</h3>
+        </div>
+        <p>Toggle the per-session timer on for up to 2.5x speed multipliers or off for relaxed play, with live multi-game turn alerts.</p>
+      </article>
+    </section>
+
+    <section class="releases-section" id="releases">
+      <div class="wood-panel">
+        <div class="gold-nameplate">
+          <span class="rivet" aria-hidden="true"></span>
+          <span>APK ARCHIVE</span>
+          <span class="rivet" aria-hidden="true"></span>
+        </div>
+
+        <div class="panel-body">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow light">VERSION HISTORY</span>
+              <h2>All Releases</h2>
+            </div>
+            <div class="filter-group" role="group" aria-label="Filter releases">
+              <button class="filter-chip active" data-filter="all" type="button">ALL</button>
+              <button class="filter-chip" data-filter="stable" type="button">STABLE</button>
+              <button class="filter-chip" data-filter="beta" type="button">BETA</button>
+            </div>
+          </div>
+
+          <div class="release-list" id="releaseList">
+            <!-- Populated from app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="install-guide">
+      <div class="wood-panel">
+        <div class="gold-nameplate">
+          <span class="rivet" aria-hidden="true"></span>
+          <span>SIDELOAD GUIDE</span>
+          <span class="rivet" aria-hidden="true"></span>
+        </div>
+
+        <div class="panel-body">
+          <div class="parchment-scroll">
+            <h3>How to install the APK on Android</h3>
+            <ol class="steps-list">
+              <li>Tap <strong>Download APK</strong> above to save <code>app-debug.apk</code> to your device.</li>
+              <li>Open the downloaded file from your browser downloads or Android Files app.</li>
+              <li>If prompted, allow <strong>Install unknown apps</strong> for your browser or file manager, then tap <strong>Install</strong>.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>WORD LADDER &bull; ANDROID BUILD DISTRIBUTION</span>
+    <span id="footerCount"></span>
+  </footer>
+
+  <script src="app2.js"></script>
+</body>
+</html>
