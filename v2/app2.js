@@ -4,6 +4,7 @@
 // new APK file (e.g. "files/word-ladder-v1.1.apk" or a GitHub Release URL).
 // ============================================================================
 const RELEASES = [
+  
   {
     version: "2.0.4",
     channel: "stable", // "stable" | "beta"
