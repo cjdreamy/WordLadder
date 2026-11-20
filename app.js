@@ -198,7 +198,7 @@ const RELEASES = [
 const DEMOS = [
   {
     title: "Quick Play Demo",
-    url: "demo.html",
+    url: "v2/demo.html",
     description: "Try a lightweight, pass-and-play word ladder in your browser."
   },
   {

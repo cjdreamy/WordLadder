@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Word Ladder — Web Play (iOS &amp; PC)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&family=Lilita+One&family=Plus+Jakarta+Sans:wght@500;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="demo.css" />
+</head>
+<body class="dark">
+  <div class="tavern-bg" aria-hidden="true"></div>
+
+  <header class="demo-topbar">
+    <div class="topbar-left">
+      <a class="tactile-btn wood compact" href="index2.html" aria-label="Back to Word Ladder Downloads">
+        &larr; DOWNLOADS
+      </a>
+      <div class="brand-chip">
+        <div class="mini-tiles" aria-hidden="true">
+          <span class="mini-tile ivory">W</span>
+          <span class="mini-tile ruby">L</span>
+        </div>
+        <div class="brand-label">
+          <strong>WORD LADDER WEB</strong>
+          <span id="dictStatusChip">LOADING DICTIONARY</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topbar-right">
+      <button id="tileStyleBtn" class="tactile-btn wood compact" type="button">
+        TILES: IVORY
+      </button>
+      <button id="themeBtn" class="tactile-btn wood compact" type="button">
+        WARM OAK
+      </button>
+    </div>
+  </header>
+
+  <main class="demo-shell">
+    <!-- ==================== MATCH SETUP VIEW ==================== -->
+    <section id="setupScreen" class="wood-panel" aria-label="Match Setup">
+      <div class="gold-nameplate">
+        <span class="rivet" aria-hidden="true"></span>
+        <span>NEW MATCH</span>
+        <span class="rivet" aria-hidden="true"></span>
+      </div>
+
+      <div class="setup-grid">
+        <div class="parchment-card">
+          <div class="setup-block-title">1. Word Length &amp; Puzzle</div>
+          <div class="segmented-row" id="lengthSeg" role="group" aria-label="Word length">
+            <button type="button" class="seg-btn active" data-len="4">4L</button>
+            <button type="button" class="seg-btn" data-len="5">5L</button>
+            <button type="button" class="seg-btn" data-len="6">6L</button>
+            <button type="button" class="seg-btn" data-len="7">7L</button>
+          </div>
+
+          <div class="setup-block-title">Curated Pairs</div>
+          <div class="curated-chips" id="curatedChips"></div>
+
+          <div class="setup-block-title">Custom or Random Pair</div>
+          <div class="custom-pair-box">
+            <input id="customStartInput" class="word-input" type="text" maxlength="4" placeholder="START" aria-label="Custom start word" />
+            <input id="customTargetInput" class="word-input" type="text" maxlength="4" placeholder="TARGET" aria-label="Custom target word" />
+            <button id="validateCustomBtn" class="tactile-btn sapphire compact" type="button">CHECK</button>
+          </div>
+
+          <div id="customPairBanner" class="status-banner">Loading dictionary...</div>
+
+          <div class="action-toolbar" style="justify-content: flex-start;">
+            <button id="randomPuzzleBtn" class="tactile-btn compact" type="button">
+              SHUFFLE RANDOM PUZZLE
+            </button>
+          </div>
+        </div>
+
+        <div class="parchment-card">
+          <div class="setup-block-title">2. Players &amp; Rules</div>
+          <div class="segmented-row" id="playerCountSeg" role="group" aria-label="Number of players">
+            <button type="button" class="seg-btn" data-count="1">1P SOLO</button>
+            <button type="button" class="seg-btn active" data-count="2">2P</button>
+            <button type="button" class="seg-btn" data-count="3">3P</button>
+            <button type="button" class="seg-btn" data-count="4">4P</button>
+          </div>
+
+          <div class="seats-list" id="seatsList"></div>
+
+          <div class="toggle-line">
+            <div class="toggle-line-text">
+              <strong>Speed Timer Multiplier</strong>
+              <span>Earn up to 2.5x points for quick turns.</span>
+            </div>
+            <button id="setupTimerSwitch" type="button" class="slide-switch" aria-label="Toggle speed timer">
+              <span>ON</span>
+              <span>OFF</span>
+              <span class="knob" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="toggle-line">
+            <div class="toggle-line-text">
+              <strong>Detour Backtracking</strong>
+              <span>Allow revisiting prior rungs (+2 detour pts).</span>
+            </div>
+            <button id="setupBacktrackSwitch" type="button" class="slide-switch on" aria-label="Toggle backtrack rule">
+              <span>ON</span>
+              <span>OFF</span>
+              <span class="knob" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="setup-footer-cta">
+            <button id="startMatchBtn" class="tactile-btn emerald" type="button">
+              START MATCH &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ACTIVE GAME BOARD VIEW ==================== -->
+    <section id="boardScreen" class="board-layout hidden" aria-label="Word Ladder Board">
+      <div class="wood-panel board-main-card">
+        <div class="gold-nameplate">
+          <span class="rivet" aria-hidden="true"></span>
+          <span>WORD LADDER</span>
+          <span class="rivet" aria-hidden="true"></span>
+        </div>
+
+        <div class="match-hud-bar">
+          <div class="target-readout">
+            <button id="backToSetupBtn" class="tactile-btn wood compact" type="button">&larr; SETUP</button>
+            <span id="targetStartPill" class="word-pill start">MILK</span>
+            <span>&rarr;</span>
+            <span id="targetEndPill" class="word-pill target">SOUP</span>
+            <span id="parMetaPill" class="meta-pill">PAR 5</span>
+            <span id="distMetaPill" class="meta-pill">5 STEPS LEFT</span>
+          </div>
+
+          <div class="timer-hud-box">
+            <span id="timerPill" class="timer-pill">TIMER OFF &bull; 1.0x</span>
+            <button id="boardTimerSwitch" type="button" class="slide-switch" aria-label="Toggle match timer">
+              <span>ON</span>
+              <span>OFF</span>
+              <span class="knob" aria-hidden="true"></span>
+            </button>
+            <button id="endMatchBtn" class="tactile-btn ruby compact" type="button">END</button>
+          </div>
+        </div>
+
+        <div id="scoreboardStrip" class="scoreboard-strip"></div>
+
+        <div id="ladderTray" class="ladder-tray" aria-live="polite"></div>
+
+        <div class="draft-dock">
+          <div class="draft-header">
+            <span id="turnOwnerLabel" class="draft-prompt">PLAYER 1'S TURN</span>
+            <span id="slotPosLabel" class="meta-pill">INDEX 1 / 4</span>
+          </div>
+
+          <div id="draftSlotsRow" class="draft-slots-row" role="group" aria-label="Current word letter slots"></div>
+
+          <div class="slot-arrow-nav">
+            <button id="slotLeftBtn" class="mini-pill-btn" type="button" aria-label="Move cursor left">&larr; PREV INDEX</button>
+            <button id="slotRightBtn" class="mini-pill-btn" type="button" aria-label="Move cursor right">NEXT INDEX &rarr;</button>
+          </div>
+
+          <div id="draftFeedback" class="draft-feedback"></div>
+
+          <div class="action-toolbar">
+            <button id="hintBtn" class="tactile-btn sapphire compact" type="button">HINT</button>
+            <button id="revertBtn" class="tactile-btn wood compact" type="button">REVERT</button>
+            <button id="passBtn" class="tactile-btn wood compact" type="button">PASS</button>
+            <button id="submitWordBtn" class="tactile-btn emerald compact" type="button">SUBMIT WORD</button>
+          </div>
+        </div>
+
+        <div id="qwertyDeck" class="qwerty-deck" role="group" aria-label="Letter keyboard"></div>
+
+        <div id="victoryPanel" class="parchment-card victory-overlay hidden">
+          <h3 style="margin-bottom: 6px;">Match Summary</h3>
+          <p id="victorySummary" style="font-size: 14px; color: var(--parchment-muted);"></p>
+          <div class="setup-block-title" style="margin-top: 12px;">Shortest Optimal Ladder</div>
+          <div id="optimalPathRow" class="optimal-path-chips"></div>
+          <div class="action-toolbar" style="justify-content: flex-start;">
+            <button id="playAgainBtn" class="tactile-btn emerald compact" type="button">REPLAY SAME PAIR</button>
+            <button id="newPuzzleBtn" class="tactile-btn compact" type="button">NEXT RANDOM PUZZLE</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="side-rail">
+        <div class="wood-panel pc-only-card">
+          <div class="gold-nameplate">
+            <span class="rivet" aria-hidden="true"></span>
+            <span>PC CONTROLS</span>
+            <span class="rivet" aria-hidden="true"></span>
+          </div>
+          <div class="panel-body">
+            <div class="parchment-card">
+              <ul class="shortcut-list">
+                <li>
+                  <span>Move letter slot</span>
+                  <span class="kbd-badge">&larr; / &rarr; ARROWS</span>
+                </li>
+                <li>
+                  <span>Type replacement letter</span>
+                  <span class="kbd-badge">A &ndash; Z</span>
+                </li>
+                <li>
+                  <span>Submit rung</span>
+                  <span class="kbd-badge">ENTER</span>
+                </li>
+                <li>
+                  <span>Revert / step back</span>
+                  <span class="kbd-badge">BACKSPACE</span>
+                </li>
+                <li>
+                  <span>Clear draft</span>
+                  <span class="kbd-badge">ESC</span>
+                </li>
+                <li>
+                  <span>BFS solver hint</span>
+                  <span class="kbd-badge">SPACE</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="wood-panel">
+          <div class="gold-nameplate">
+            <span class="rivet" aria-hidden="true"></span>
+            <span>HOW TO PLAY</span>
+            <span class="rivet" aria-hidden="true"></span>
+          </div>
+          <div class="panel-body">
+            <div class="parchment-card" style="font-size: 13px;">
+              <p style="margin-bottom: 8px;">
+                Change <strong>exactly one letter</strong> on each turn to climb from the blue Start word to the green Target word using real English words.
+              </p>
+              <p style="color: var(--parchment-muted);">
+                On <strong>iPhone / iPad</strong>, tap any letter tile above and tap keys on the deck. On <strong>PC</strong>, use <strong>Left / Right Arrow keys</strong> to jump between slots, type a letter, and hit <strong>Enter</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="demo.js"></script>
+</body>
+</html>

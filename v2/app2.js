@@ -5,15 +5,14 @@
 // ============================================================================
 const RELEASES = [
   {
-    version: "2.0.3",
+    version: "2.0.4",
     channel: "stable", // "stable" | "beta"
     date: "2026-11-16",
     minAndroid: "Android 7.0+ (API 24)",
     size: "APK",
-    apkUrl: "../files/app-debug.apk",
-    fileName: "WordLadder-v2.0.3.apk",
+    apkUrl: "../files/v2.0.4/app-debug.apk",
+    fileName: "WordLadder-v2.0.4.apk",
     notes: [
-      "notifications, ratings, avatars",
       "51,000+ English dictionary supporting 4, 5, 6, and 7-letter word ladders.",
       "Optional per-session speed timer (up to 2.5x points) toggleable before or during any match, plus flexible detour backtracking.",
       "Dedicated Home, Online, Rooms, and Settings bottom navigation tabs with Back buttons, early End Game, and Close/Leave Room controls.",
@@ -40,6 +39,9 @@ function renderHeroLatest() {
   box.innerHTML = `
     <a class="tactile-btn" href="${latest.apkUrl}" download="${latest.fileName}">
       DOWNLOAD v${latest.version} APK
+    </a>
+    <a class="tactile-btn emerald" href="demo.html">
+      PLAY WEB (iOS &amp; PC)
     </a>
     <a class="tactile-btn secondary" href="#releases">
       ALL VERSIONS (${RELEASES.length})
